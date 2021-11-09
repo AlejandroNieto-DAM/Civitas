@@ -5,6 +5,7 @@
 package civitas;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
@@ -35,7 +36,7 @@ public class CivitasJuego {
         gestor = new GestorEstados();
         estadoJuego = gestor.estadoInicial();
         
-        Dado.getInstance().setDebug(true);
+        //Dado.getInstance().setDebug(true);
         indiceJugadorActual = Dado.getInstance().quienEmpieza(jugadores.size());
 
         mazoSorpresas = new MazoSorpresas();
@@ -146,14 +147,9 @@ public class CivitasJuego {
         this.indiceJugadorActual = (this.indiceJugadorActual + 1)%this.jugadores.size(); 
     }
     
-    public ArrayList<Jugador> ranking(){
-        ArrayList ranking = (ArrayList<Jugador>) this.jugadores.clone();
-        
-        Collections.sort(ranking);
-        
-        return ranking;
-        
-        
+    public ArrayList<Jugador> ranking(){        
+        Collections.sort(this.getJugadores());
+        return this.jugadores;
     }
     
     public OperacionJuego siguientePaso(){

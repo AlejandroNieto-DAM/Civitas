@@ -21,7 +21,8 @@ public class JuegoTexto {
     public static void main(String[] args) {
         ArrayList<String> nombreJugadores = new ArrayList();
         nombreJugadores.add("Alejandro");
-        nombreJugadores.add("Benjamin");
+        nombreJugadores.add("Irene");
+        nombreJugadores.add("Javi");
        //nombreJugadores.add("Francisco");
         CivitasJuego modelo = new CivitasJuego(nombreJugadores);
         VistaTextual vista = new VistaTextual(modelo);

@@ -66,11 +66,11 @@ public class Jugador implements Comparable<Jugador> {
     boolean construirCasa(int ip){
         boolean result = false;
         boolean existe = this.existeLaPropiedad(ip);
-        System.out.println("***** existe " + existe);
+        //System.out.println("***** existe " + existe);
         if(existe){
             Casilla casilla = this.propiedades.get(ip);
             boolean puedoEdificar = this.puedoEdificarCasa(casilla);
-            System.out.println("***** puedoEdificar " + puedoEdificar);
+            ///System.out.println("***** puedoEdificar " + puedoEdificar);
 
             if(puedoEdificar){
                 result = true;
@@ -97,7 +97,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     boolean enBancarrota(){
-        return this.saldo < 0 ? true : false;
+        return this.saldo < 0;
     }
     
     private boolean existeLaPropiedad(int ip){
@@ -153,7 +153,7 @@ public class Jugador implements Comparable<Jugador> {
     boolean moverACasilla(int numCasilla){
         this.casillaActual = numCasilla;
         this.puedeComprar = false;
-        Diario.getInstance().ocurreEvento("El jugador: " + this.getNombre() + " se mueve a la casilla " + this.getCasillaActual());
+        Diario.getInstance().ocurreEvento("El jugador: " + this.getNombre() + " se mueve a la casilla " + this.getCasillaActual() + ", saldo: " + this.getSaldo());
         return true;
     }
     
@@ -217,6 +217,7 @@ public class Jugador implements Comparable<Jugador> {
         for(int i = 0; i < this.propiedades.size(); i++){
             casas += this.propiedades.get(i).getNumCasas();
         }
+        
         String infoP = "\nNombre " + this.getNombre() + "\n" +
                  "Saldo " + this.getSaldo() + "\n" +
                  "Casilla " + this.getCasillaActual() + "\n" +
@@ -234,9 +235,12 @@ public class Jugador implements Comparable<Jugador> {
     }
 
     @Override
-    public boolean compareTo(Jugador otro) {
-        return this.getSaldo() > otro.getSaldo();
+    public int compareTo(Jugador o) {
+        return (this.getSaldo() > o.getSaldo()) ? 1 : 0; 
     }
+
+
+ 
 
     
     
