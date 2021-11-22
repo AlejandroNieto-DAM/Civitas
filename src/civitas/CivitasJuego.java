@@ -61,7 +61,7 @@ public class CivitasJuego {
     public boolean comprar(){
         Jugador jugadorActual = this.getJugadorActual();
         int numCasillaActual = jugadorActual.getCasillaActual();
-        Casilla casilla = this.tablero.getCasilla(numCasillaActual);
+        CasillaCalle casilla = (CasillaCalle) this.tablero.getCasilla(numCasillaActual);
         return jugadorActual.comprar(casilla);
     }
     
@@ -109,13 +109,13 @@ public class CivitasJuego {
     private void inicializaMazoSorpresas(){
        
         for(int i = 0; i < 3; i++){
-            this.mazoSorpresas.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "PAGAR COBRAR", 500));
-            this.mazoSorpresas.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "PAGAR COBRAR", -500));
+            this.mazoSorpresas.alMazo(new SorpresaPagarCobrar("COBRAR", 500));
+            this.mazoSorpresas.alMazo(new SorpresaPagarCobrar("PAGAR", -500));
         }
         
         for(int i = 0; i < 2; i++){
-            this.mazoSorpresas.alMazo(new Sorpresa(TipoSorpresa.PORCASAHOTEL, "PAGAR POR CASA HOTEL", 100));
-            this.mazoSorpresas.alMazo(new Sorpresa(TipoSorpresa.PORCASAHOTEL, "PAGAR POR CASA HOTEL", -100));
+            this.mazoSorpresas.alMazo(new SorpresaPorCasaHotel("COBRAR POR CASA HOTEL", 100));
+            this.mazoSorpresas.alMazo(new SorpresaPorCasaHotel("PAGAR POR CASA HOTEL", -100));
         }
         
     }
@@ -129,7 +129,7 @@ public class CivitasJuego {
         for(int i = 0; i < 4; i++){
             
             for(int j = 0; j < 4; j++){
-                this.tablero.aniadeCasilla(new Casilla("Ciudad " + util, rd.nextInt(800), rd.nextInt(2500) + 1300, rd.nextInt(300)));
+                this.tablero.aniadeCasilla(new CasillaCalle("Ciudad " + util, rd.nextInt(800), rd.nextInt(2500) + 1300, rd.nextInt(300)));
                 util++;
             }
             
@@ -137,7 +137,7 @@ public class CivitasJuego {
                 this.tablero.aniadeCasilla(new Casilla("PARKING"));
             }
 
-            this.tablero.aniadeCasilla(new Casilla("Sorpresa " + i%4, this.mazoSorpresas));
+            this.tablero.aniadeCasilla(new CasillaSorpresa("Sorpresa " + i%4, this.mazoSorpresas));
 
         }
          

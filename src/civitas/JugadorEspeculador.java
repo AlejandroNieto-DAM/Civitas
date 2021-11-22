@@ -8,8 +8,6 @@ package civitas;
  *
  * @author alejandronietoalarcon
  */
-public enum TipoSorpresa {
+public class JugadorEspeculador {
     
-    PAGARCOBRAR, PORCASAHOTEL
-   
 }
