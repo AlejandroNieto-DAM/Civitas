@@ -124,7 +124,7 @@ public class Jugador implements Comparable<Jugador> {
         return this.HotelesMax;
     }
     
-    protected String getNombre(){
+    public String getNombre(){
         return this.nombre;
     }
     
@@ -140,7 +140,7 @@ public class Jugador implements Comparable<Jugador> {
         return this.puedeComprar;
     }
     
-    protected float getSaldo(){
+    public float getSaldo(){
         return this.saldo;
     }
     
@@ -237,6 +237,11 @@ public class Jugador implements Comparable<Jugador> {
     @Override
     public int compareTo(Jugador o) {
         return (this.getSaldo() > o.getSaldo()) ? 1 : 0; 
+    }
+    
+    public JugadorEspeculador convertirme(){
+        JugadorEspeculador aux = new JugadorEspeculador(this);
+        return aux;
     }
 
 

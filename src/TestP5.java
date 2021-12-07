@@ -1,8 +1,9 @@
 
+import GUI.CapturaNombres;
+import GUI.CivitasView;
 import civitas.CivitasJuego;
 import controladorCivitas.Controlador;
 import java.util.ArrayList;
-import vistaTextualCivitas.VistaTextual;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,22 +14,19 @@ import vistaTextualCivitas.VistaTextual;
  *
  * @author alejandronietoalarcon
  */
-public class JuegoTexto {
+public class TestP5 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*ArrayList<String> nombreJugadores = new ArrayList();
-        nombreJugadores.add("Alejandro");
-        nombreJugadores.add("Irene");
-        nombreJugadores.add("Javi");
-       //nombreJugadores.add("Francisco");
-        CivitasJuego modelo = new CivitasJuego(nombreJugadores, false);
-        VistaTextual vista = new VistaTextual(modelo);
+        CivitasView vista = new CivitasView();
+        CapturaNombres vistaNombres = new CapturaNombres(vista, true);
+        ArrayList<String> nombresJugadores = vistaNombres.getNombres();
+        CivitasJuego modelo = new CivitasJuego(nombresJugadores, true);
         Controlador controlador = new Controlador(modelo, vista);
-        controlador.juega();*/
-        
+        vista.setCivitasJuego(modelo);
+        controlador.juega();
     }
     
 }

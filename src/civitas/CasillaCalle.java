@@ -22,9 +22,9 @@ public class CasillaCalle extends Casilla {
     private int numCasas;
     private int numHoteles;
     
-    private Jugador propietario;
+    Jugador propietario;
     
-    CasillaCalle(String nombre, float precioCompra, float precioEdificar, float precioBaseAlquiler) {
+    public CasillaCalle(String nombre, float precioCompra, float precioEdificar, float precioBaseAlquiler) {
         super(nombre);
         this.precioCompra = precioCompra;
         this.precioEdificar = precioEdificar;
@@ -125,5 +125,9 @@ public class CasillaCalle extends Casilla {
         }
         
         return cadena;
+    }
+    
+    public void actualizaPropietarioPorConversion(JugadorEspeculador propietario){
+        this.propietario = propietario;
     }
 }

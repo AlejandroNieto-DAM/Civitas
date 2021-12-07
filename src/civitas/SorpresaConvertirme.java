@@ -10,16 +10,17 @@ import java.util.ArrayList;
  *
  * @author alejandronietoalarcon
  */
-public class SorpresaPorCasaHotel extends Sorpresa {
-    
-    public SorpresaPorCasaHotel(String texto, int valor) {
+public class SorpresaConvertirme extends Sorpresa {
+
+    public SorpresaConvertirme(String texto, int valor) {
         super(texto, valor);
     }
-    
+
     @Override
-    public void aplicarAJugador(int actual, ArrayList<Jugador> todos){
+    void aplicarAJugador(int actual, ArrayList<Jugador> todos) {
         informe(actual, todos);
-        todos.get(actual).modificarSaldo(this.valor * todos.get(actual).cantidadCasasHoteles());
+        JugadorEspeculador aux = todos.get(actual).convertirme();
+        todos.set(actual, aux);
     }
     
 }

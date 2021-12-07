@@ -26,7 +26,7 @@ public class CivitasJuego {
     
     private Tablero tablero;
     
-    public CivitasJuego(ArrayList<String> nombreJugadores){
+    public CivitasJuego(ArrayList<String> nombreJugadores, boolean debug){
         
         jugadores = new ArrayList();
         for(int i = 0; i < nombreJugadores.size(); i++){
@@ -36,7 +36,7 @@ public class CivitasJuego {
         gestor = new GestorEstados();
         estadoJuego = gestor.estadoInicial();
         
-        //Dado.getInstance().setDebug(true);
+        Dado.getInstance().setDebug(debug);
         indiceJugadorActual = Dado.getInstance().quienEmpieza(jugadores.size());
 
         mazoSorpresas = new MazoSorpresas();
