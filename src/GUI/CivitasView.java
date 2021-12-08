@@ -5,9 +5,12 @@
 package GUI;
 
 import civitas.CivitasJuego;
+import civitas.Diario;
+import civitas.Jugador;
 import civitas.OperacionInmobiliaria;
 import civitas.OperacionJuego;
 import controladorCivitas.Respuesta;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,31 +43,96 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        casillaPanel1 = new GUI.CasillaPanel();
         jugadorDatos = new GUI.JugadorPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        operacionJuego = new javax.swing.JTextField();
+        labelRanking = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        areaRanking = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("CIVITAS JUEGO");
+
+        jLabel2.setText("JUGADOR ACTUAL");
+
+        jLabel3.setText("CASILLA ACTUAL");
+
+        jLabel4.setText("Siguiente operacion");
+
+        operacionJuego.setEditable(false);
+        operacionJuego.setText("jTextField1");
+
+        labelRanking.setText("RANKING");
+
+        areaRanking.setEditable(false);
+        areaRanking.setColumns(20);
+        areaRanking.setRows(5);
+        jScrollPane1.setViewportView(areaRanking);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(jugadorDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addGap(149, 149, 149))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jugadorDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(83, 83, 83)
+                                        .addComponent(casillaPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(268, 268, 268)
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(operacionJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 28, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(135, 135, 135)
+                                .addComponent(labelRanking))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4)
+                    .addComponent(operacionJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jugadorDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(145, Short.MAX_VALUE))
+                    .addComponent(casillaPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addComponent(labelRanking)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -73,7 +141,27 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
 
     @Override
     public void actualiza() {
+        this.labelRanking.setVisible(false);
+        this.areaRanking.setVisible(false);
         this.jugadorDatos.setJugador(this.juego.getJugadorActual());
+        this.casillaPanel1.setCasilla(this.juego.getTablero().getCasilla(this.juego.getJugadorActual().getCasillaActual()));
+        
+        if(juego.finalDelJuego()){
+            this.areaRanking.setVisible(true);
+            this.labelRanking.setVisible(true);
+            
+            ArrayList<Jugador> jugadoresRanking = this.juego.ranking();
+          
+            String salida = "";
+            int contador = 1;
+            for(Jugador jugador : jugadoresRanking){
+                salida += "\n" + contador + " - " + jugador.getNombre();
+            }
+            this.areaRanking.setText(salida);
+        }
+        
+        repaint();
+        revalidate();
     }
 
     @Override
@@ -85,31 +173,60 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
 
     @Override
     public Respuesta comprar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int opcion = 1-JOptionPane.showConfirmDialog(null, "¿Quieres comprar la calle actual?", "Compra", JOptionPane.YES_NO_OPTION);
+        if(opcion == 1)
+            return Respuesta.SI;
+        else
+            return Respuesta.NO;
     }
 
     @Override
     public OperacionInmobiliaria elegirOperacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        GestionarDialog gestionD = new GestionarDialog(this);
+        int gestionElegida = gestionD.getGestion();
+        if(gestionElegida == 0)
+            return OperacionInmobiliaria.CONSTRUIR_CASA;
+        else if(gestionElegida == 1)
+            return OperacionInmobiliaria.CONSTRUIR_HOTEL;
+        else 
+            return OperacionInmobiliaria.TERMINAR;
+       
     }
 
     @Override
     public int elegirPropiedad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PropiedadDialog propiedadD = new PropiedadDialog(this, this.juego.getJugadorActual());
+        return propiedadD.getPropiedadElegida();
     }
 
     @Override
-    public void mostrarSiguienteOperacion(OperacionJuego operación) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mostrarSiguienteOperacion(OperacionJuego operacion) {
+        this.operacionJuego.setText(String.valueOf(operacion));
+        if(operacion == OperacionJuego.AVANZAR){
+            Dado.createInstance(this);
+        }
+        
+        this.repaint();
+     
     }
 
     @Override
     public void mostrarEventos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!Diario.getInstance().getEventos().isEmpty()){
+            DiarioDialog diarioD = new DiarioDialog(this);
+        }   
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaRanking;
+    private GUI.CasillaPanel casillaPanel1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private GUI.JugadorPanel jugadorDatos;
+    private javax.swing.JLabel labelRanking;
+    private javax.swing.JTextField operacionJuego;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,7 +23,7 @@ public class TestP5 {
         CivitasView vista = new CivitasView();
         CapturaNombres vistaNombres = new CapturaNombres(vista, true);
         ArrayList<String> nombresJugadores = vistaNombres.getNombres();
-        CivitasJuego modelo = new CivitasJuego(nombresJugadores, true);
+        CivitasJuego modelo = new CivitasJuego(nombresJugadores, false);
         Controlador controlador = new Controlador(modelo, vista);
         vista.setCivitasJuego(modelo);
         controlador.juega();
