@@ -28,10 +28,14 @@ public class Controlador {
     
     public void juega(){
         boolean finalJuego = false;
+        int contador = 3;
         while(finalJuego == false){
+            
             this.vista.actualiza();
             this.vista.pausa();
+            
             OperacionJuego op = this.juego.siguientePaso();
+
             this.vista.mostrarSiguienteOperacion(op);
             if(op != OperacionJuego.PASAR_TURNO){
                 this.vista.mostrarEventos();
@@ -39,6 +43,12 @@ public class Controlador {
             finalJuego = this.juego.finalDelJuego();
             if(finalJuego == false){
                 if(op == OperacionJuego.COMPRAR){
+                   Respuesta res = this.vista.comprar();
+                    if(res == Respuesta.SI){
+                        this.juego.comprar();
+                       
+                    }    
+                } else if(op == OperacionJuego.COMPRAR){
                     Respuesta res = this.vista.comprar();
                     if(res == Respuesta.SI){
                         this.juego.comprar();
@@ -58,7 +68,7 @@ public class Controlador {
                     }
                     this.juego.siguientePasoCompletado(op);      
                 }
-            }
+            }  
         }
         
         this.juego.ranking();

@@ -4,8 +4,8 @@
  */
 package civitas;
 
+import GUI.VistaDado;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
@@ -36,8 +36,8 @@ public class CivitasJuego {
         gestor = new GestorEstados();
         estadoJuego = gestor.estadoInicial();
         
-        Dado.getInstance().setDebug(debug);
-        indiceJugadorActual = Dado.getInstance().quienEmpieza(jugadores.size());
+        VistaDado.getInstance().setDebug(debug);
+        indiceJugadorActual = VistaDado.getInstance().quienEmpieza(jugadores.size());
 
         mazoSorpresas = new MazoSorpresas();
         
@@ -50,7 +50,7 @@ public class CivitasJuego {
     private void avanzaJugador(){
         Jugador jugadorActual = this.getJugadorActual();
         int posicionActual = jugadorActual.getCasillaActual();
-        int tirada = Dado.getInstance().tirar();
+        int tirada = VistaDado.getInstance().tirar();
         int posicionNueva = this.tablero.nuevaPosicion(posicionActual, tirada);
         Casilla casilla = this.tablero.getCasilla(posicionNueva);
         this.contabilizarPasosPorSalida(jugadorActual);

@@ -14,9 +14,9 @@ import javax.swing.Timer;
  *
  * @author fvelasco
  */
-public class Dado extends JDialog {
+public class VistaDado extends javax.swing.JDialog {
   
-  private static Dado instance = null;
+  private static VistaDado instance = null;
   private Random random; 
   private Timer timerDado;
 
@@ -26,7 +26,7 @@ public class Dado extends JDialog {
   private Boolean debug;
 
     
-  private Dado (JFrame parent) {
+  private VistaDado (JFrame parent) {
     super(parent, true);
     
     initComponents();
@@ -45,10 +45,10 @@ public class Dado extends JDialog {
 
   public static void createInstance (JFrame parent) {
     if (instance == null)
-      instance = new Dado (parent);
+      instance = new VistaDado (parent);
   }
   
-  public static Dado getInstance() {
+  public static VistaDado getInstance() {
       return instance;
   }
   
@@ -65,7 +65,7 @@ public class Dado extends JDialog {
   }
   
    public int quienEmpieza (int n) {
-    return random.nextInt(n); 
+    return random.nextInt(n - 1); 
   }
   
   private int privateTirar() {

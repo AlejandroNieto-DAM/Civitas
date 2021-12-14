@@ -52,6 +52,7 @@ public class DiarioDialog extends javax.swing.JDialog {
         buttonOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         eventosLabel.setText("EVENTOS");
 
