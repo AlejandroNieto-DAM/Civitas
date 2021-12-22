@@ -129,7 +129,7 @@ public class CivitasJuego {
         for(int i = 0; i < 4; i++){
             
             for(int j = 0; j < 4; j++){
-                this.tablero.aniadeCasilla(new CasillaCalle("Ciudad " + util, rd.nextInt(800), rd.nextInt(2500) + 1300, rd.nextInt(300)));
+                this.tablero.aniadeCasilla(new CasillaCalle("Ciudad " + util, rd.nextInt(5500) + 2200, rd.nextInt(3000) + 1500, rd.nextInt(1500)+ 500));
                 util++;
             }
             

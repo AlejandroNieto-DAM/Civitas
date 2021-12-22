@@ -10,6 +10,7 @@ import civitas.Jugador;
 import civitas.OperacionInmobiliaria;
 import civitas.OperacionJuego;
 import controladorCivitas.Respuesta;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
 public class CivitasView extends javax.swing.JFrame implements Vista {
 
     CivitasJuego juego;
+
     
     /**
      * Creates new form CivitasView
@@ -103,15 +105,14 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
                                         .addComponent(operacionJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 8, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(135, 135, 135)
-                                .addComponent(labelRanking))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(135, 135, 135)
+                        .addComponent(labelRanking)
+                        .addGap(0, 642, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +157,8 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
             String salida = "";
             int contador = 1;
             for(Jugador jugador : jugadoresRanking){
-                salida += "\n" + contador + " - " + jugador.getNombre();
+                salida += contador + " - " + jugador.getNombre() + "\n";
+                contador += 1;
             }
             this.areaRanking.setText(salida);
         }

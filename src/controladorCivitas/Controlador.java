@@ -48,13 +48,7 @@ public class Controlador {
                         this.juego.comprar();
                        
                     }    
-                } else if(op == OperacionJuego.COMPRAR){
-                    Respuesta res = this.vista.comprar();
-                    if(res == Respuesta.SI){
-                        this.juego.comprar();
-                       
-                    }    
-                     this.juego.siguientePasoCompletado(op);
+                    this.juego.siguientePasoCompletado(op);
                 } else if(op == OperacionJuego.GESTIONAR){
                     OperacionInmobiliaria oi = this.vista.elegirOperacion();
                     if(oi != OperacionInmobiliaria.TERMINAR){
